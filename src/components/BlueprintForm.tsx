@@ -21,10 +21,12 @@ export function BlueprintForm({ onGenerate, formData, setFormData }: BlueprintFo
 
   return (
     <div className="glass-card p-7 mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <h3 className="text-accent font-display text-lg mb-5">🎬 Project Details</h3>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <input
           type="text"
-          placeholder="🎭 Genre"
+          placeholder="🎭 Genre (e.g., Noir, Horror)"
           value={formData.genre}
           onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
           className="glass-input px-4 py-3.5 w-full"
@@ -38,9 +40,23 @@ export function BlueprintForm({ onGenerate, formData, setFormData }: BlueprintFo
         />
         <input
           type="text"
-          placeholder="📝 Logline"
-          value={formData.logline}
-          onChange={(e) => setFormData({ ...formData, logline: e.target.value })}
+          placeholder="🎨 Visual Style (e.g., Neon, Muted)"
+          value={formData.visualStyle}
+          onChange={(e) => setFormData({ ...formData, visualStyle: e.target.value })}
+          className="glass-input px-4 py-3.5 w-full"
+        />
+        <input
+          type="text"
+          placeholder="🏙️ Setting (e.g., Tokyo, Small Town)"
+          value={formData.setting}
+          onChange={(e) => setFormData({ ...formData, setting: e.target.value })}
+          className="glass-input px-4 py-3.5 w-full"
+        />
+        <input
+          type="text"
+          placeholder="⏳ Era (e.g., 1980s, Near Future)"
+          value={formData.era}
+          onChange={(e) => setFormData({ ...formData, era: e.target.value })}
           className="glass-input px-4 py-3.5 w-full"
         />
         <select
@@ -53,6 +69,14 @@ export function BlueprintForm({ onGenerate, formData, setFormData }: BlueprintFo
           <option value="high">💎 High Budget</option>
         </select>
       </div>
+      
+      <input
+        type="text"
+        placeholder="📝 Logline — One sentence that captures your story"
+        value={formData.logline}
+        onChange={(e) => setFormData({ ...formData, logline: e.target.value })}
+        className="glass-input px-4 py-3.5 w-full mt-4"
+      />
 
       <button
         onClick={handleGenerate}
@@ -60,7 +84,7 @@ export function BlueprintForm({ onGenerate, formData, setFormData }: BlueprintFo
         className="gradient-button w-full mt-6 py-4 rounded-2xl text-base font-medium flex items-center justify-center gap-2 disabled:opacity-70"
       >
         <Sparkles className={`w-5 h-5 ${isGenerating ? "animate-spin" : ""}`} />
-        {isGenerating ? "Generating..." : "Generate Film Blueprint"}
+        {isGenerating ? "Generating..." : "Generate Full Film Blueprint"}
       </button>
     </div>
   );
